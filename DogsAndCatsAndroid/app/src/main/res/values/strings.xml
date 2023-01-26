@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">Dogs And Cats</string>
+    <string name="name_dog">Dog</string>
+    <string name="name_cat">Cat</string>
+    <string name="percentage">%s\%%</string>
+    <string name="button_recognize">Recognize</string>
+    <string name="button_clear">Clear result</string>
+</resources>

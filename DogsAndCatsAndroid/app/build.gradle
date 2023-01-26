@@ -1,0 +1,83 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
+}
+
+android {
+    namespace 'com.kriskda.dogscats'
+    compileSdk 33
+
+    defaultConfig {
+        applicationId "com.kriskda.dogscats"
+        minSdk 26
+        targetSdk 33
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+
+    buildFeatures {
+        compose = true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.3.2"
+    }
+
+    testOptions {
+        unitTests {
+            includeAndroidResources = true
+        }
+    }
+}
+
+dependencies {
+    implementation project(':domain')
+    implementation project(':data')
+
+    implementation libraries.coreKtx
+    implementation libraries.appcompat
+    implementation libraries.camera
+    implementation libraries.cmaeraLifecycle
+    implementation libraries.cmaeraView
+    def composeBom = platform('androidx.compose:compose-bom:2022.10.00')
+    implementation composeBom
+    implementation 'androidx.compose.material:material'
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    debugImplementation 'androidx.compose.ui:ui-test-manifest'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+    implementation libraries.activityCompose
+    implementation libraries.viewModelCompose
+    implementation libraries.viewModelKtx
+
+    implementation libraries.hiltAndroid
+    kapt libraries.hiltCompiler
+
+    testImplementation libraries.testJunit
+    testImplementation libraries.testRobolectric
+    testImplementation libraries.testComposeTest
+    testImplementation libraries.testEspresso
+    testImplementation libraries.testMockitoKotlin
+}
+
+kapt {
+    correctErrorTypes true
+}
