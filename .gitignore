@@ -2,8 +2,10 @@
 dogscats/
 models/
 model_optimize/
+logs/
 *.tflite
 *.h5
+.ipynb_checkpoints/
 
 # Built application files
 *.apk
